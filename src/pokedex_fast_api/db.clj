@@ -8,7 +8,7 @@
 (def db-spec (:db-spec config/properties))
 
 ;; data specs
-(s/def ::preview (s/keys :req-un [::proper_name ::dex_num ::type1
+(s/def ::preview (s/keys :req-un [::en ::dex_num ::type1
                                   ::type2 ]))
 (s/def ::stats (s/keys :req-un [::height ::weight ::hp ::atk ::def ::spatk ::spdef ::spd]))
 (def table-name "PokemonSneakPeek")
@@ -38,7 +38,7 @@
 
 ;; public methods
 (defn get-previews []
-  (get-rows [:proper_name :dex_num :type1 :type2]
+  (get-rows [:en :dex_num :type1 :type2]
             table-name
             #(s/conform ::preview %)))
 
